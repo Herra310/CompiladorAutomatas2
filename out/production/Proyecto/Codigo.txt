@@ -4,5 +4,5 @@ class miClase
 	if ( Y2 )
 	    X1 = 16 ;
 	else
-	while ( Y2 )  write ( true ) ;
+	while ( Y2 )  write ( true )
 }

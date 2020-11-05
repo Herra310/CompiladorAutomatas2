@@ -90,29 +90,38 @@ public class Sintactico {
 
     public Statement AnalizarStatement(boolean bandera) {
         switch (tiposTokens.get(contador)) {
-            case "if":
+            case "if" -> {
                 If f = AnalizarIfStatement(bandera);
                 if (f != null) {
                     return f;
                 }
-            case "while":
+                return null;
+            }
+            case "while" -> {
                 While wh = AnalizarWhileStatement(bandera);
                 if (wh != null) {
                     return wh;
                 }
-            case "write":
+                return null;
+            }
+            case "write" -> {
                 Write wr = AnalizarWriteStatement(bandera);
                 if (wr != null) {
                     return wr;
                 }
-            case "identifier":
+                return null;
+            }
+            case "identifier" -> {
                 Asignacion a = AnalizarAsignacionVariables(bandera);
                 if (a != null) {
                     return a;
                 }
-            default:
+                return null;
+            }
+            default -> {
                 System.out.println("Statement no encontrado");
                 return null;
+            }
         }
     }
 
