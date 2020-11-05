@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class MainCompilador {
 
-    private static ArrayList<Token> tokens;
+    public static ArrayList<Token> tokens;
 
     public static void main(String[] args) throws IOException {
         LeerArchivos arch = new LeerArchivos("Codigo");

@@ -6,5 +6,3 @@ class miClase
 	else
 	while ( Y2 )  write ( true ) ;
 }
-
-

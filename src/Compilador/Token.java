@@ -21,4 +21,7 @@ public class Token {
     public String toString(){
         return token+"\t"+reservada+"\t"+tipo;
     }
+
+    public String getToken(){ return token; }
+
 }

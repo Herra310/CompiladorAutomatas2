@@ -5,6 +5,4 @@ class miClase
 	    X1 = 16 ;
 	else
 	while ( Y2 )  write ( true ) ;
-
-
-
+}
