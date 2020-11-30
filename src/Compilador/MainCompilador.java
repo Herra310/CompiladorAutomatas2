@@ -1,12 +1,18 @@
 package Compilador;
 
+import Arbol.DefVar;
+import Tabla.Semantico;
+import Tabla.Simbolo;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainCompilador {
 
+    public static Arbol.Programa Arbol;
     public static ArrayList<Token> tokens;
-
+    public static Sintactico sin;
+    public static ArrayList<Simbolo> tablasim;
     public static void main(String[] args) throws IOException {
         LeerArchivos arch = new LeerArchivos("Codigo");
         Lexico analizadorLexico = new Lexico();
@@ -19,8 +25,22 @@ public class MainCompilador {
             linea = arch.leerSigLinea();
             analizadorLexico.analizarLinea(linea, l, 0);
         }
-        new Sintactico(obtenerTipos());
+        sin = new Sintactico(obtenerTipos());
+        Arbol = sin.analizar();
+        ObtenerSimbolos();
+        Semantico.analizarStatement(Arbol.stat, tablasim);
+        System.out.println("SIU");
     }
+
+    private static void ObtenerSimbolos() {
+        tablasim = new ArrayList<>();
+        Simbolo s;
+        for (DefVar df : Arbol.defvariables) {
+            s = new Simbolo(df.nombre, df.tipo);
+            tablasim.add(s);
+        }
+    }
+
 
     private static ArrayList<String> obtenerTipos() {
         ArrayList<String> al = new ArrayList<>();

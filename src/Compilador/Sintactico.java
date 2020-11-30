@@ -15,15 +15,13 @@ public class Sintactico {
     public Sintactico(ArrayList<String> tt) {
         tiposTokens = tt;
         Arbol= new Arbol.Programa();
-        analizar();
     }
 
-    private void analizar() {
-
+    public Arbol.Programa analizar() {
         if (AnalizarClase(bandera)) {
-            System.out.println("El código ha compilado con éxito.");
+            return Arbol;
         }
-
+        return null;
     }
 
     public boolean AnalizarClase(boolean bandera) {

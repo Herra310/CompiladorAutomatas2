@@ -1,7 +1,7 @@
 class miClase
-	INTEGER X1 ; BOOLEAN Y2 ;
+	INTEGER X1 ; BOOLEAN Y2 ; INTEGER X3;
 {
-	if ( Y2 )
+	if  ( Y2 )
 	    X1 = 16 ;
 	else
 	while ( Y2 )  write ( true ) ;
