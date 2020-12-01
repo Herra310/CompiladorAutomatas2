@@ -1,6 +1,8 @@
 package Compilador;
 
 import Arbol.DefVar;
+import Codintermedio.Cuadruple;
+import Codintermedio.Generador;
 import Tabla.Semantico;
 import Tabla.Simbolo;
 
@@ -11,9 +13,13 @@ public class MainCompilador {
 
     public static Arbol.Programa Arbol;
     public static ArrayList<Token> tokens;
+    public static ArrayList<Cuadruple> cuadruples;
     public static Sintactico sin;
     public static ArrayList<Simbolo> tablasim;
+
+
     public static void main(String[] args) throws IOException {
+        boolean band=true;
         LeerArchivos arch = new LeerArchivos("Codigo");
         Lexico analizadorLexico = new Lexico();
         tokens = new ArrayList<>();
@@ -29,7 +35,14 @@ public class MainCompilador {
         Arbol = sin.analizar();
         ObtenerSimbolos();
         Semantico.analizarStatement(Arbol.stat, tablasim);
-        System.out.println("SIU");
+        if (band){
+            cuadruples = Generador.generarCod(Arbol);
+            int c2 = 0;
+            for (Cuadruple c:cuadruples)
+                System.out.println( (++c2)+"\t"+c.getOperador()+"\t"+c.getArg1()+"\t"+c.getArg2()+"\t"+c.getResultado() );
+
+            System.out.println("Programa compilado correctamente");
+        }
     }
 
     private static void ObtenerSimbolos() {
